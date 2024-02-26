@@ -51,51 +51,44 @@ public class Storage {
 	}
 
 	public void addClientSession(String user, Connection connection) {
-
-		// TODO: add corresponding client session to the storage
-		// See ClientSession class
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+		this.clients.put(user, new ClientSession(user,connection));
 	}
 
 	public void removeClientSession(String user) {
-
-		// TODO: disconnet the client (user) 
-		// and remove client session for user from the storage
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+		this.clients.remove(user);
 	}
 
 	public void createTopic(String topic) {
-
-		// TODO: create topic in the storage
-
-		throw new UnsupportedOperationException(TODO.method());
-	
+		//Legger til det nye tilfellet av topic og lager et nytt tomt set til users
+		this.subscriptions.put(topic, ConcurrentHashMap.newKeySet());
 	}
 
 	public void deleteTopic(String topic) {
-
-		// TODO: delete topic from the storage
-
-		throw new UnsupportedOperationException(TODO.method());
-		
+		subscriptions.remove(topic);
 	}
 
 	public void addSubscriber(String user, String topic) {
+		Set<String> subscribers = subscriptions.get(topic);
 
-		// TODO: add the user as subscriber to the topic
-		
-		throw new UnsupportedOperationException(TODO.method());
-		
+		if(subscribers != null) {
+			subscribers.add(user);
+		} else {
+			createTopic(topic);
+			addSubscriber(user,topic);
+		}
+
 	}
 
 	public void removeSubscriber(String user, String topic) {
-
-		// TODO: remove the user as subscriber to the topic
-
-		throw new UnsupportedOperationException(TODO.method());
+		Set<String> subscribers = subscriptions.get(topic);
+		if (subscribers != null) {
+			subscribers.remove(user);
+			//Kan legge til at topic fjernes hvis den er tom, om ønskelig
+			/*
+			if(subscribers.isEmpty()) {
+				deleteTopic(topic);
+			}
+			 */
+		}
 	}
 }
