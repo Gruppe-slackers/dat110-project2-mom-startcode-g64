@@ -14,10 +14,6 @@ public class CreateTopicMsg extends Message {
         return this.topic;
     }
 
-    public void serTopic(String topic) {
-        this.topic = topic;
-    }
-
     @Override
     public String toString() {
         return "CreateTopicMsg{" +

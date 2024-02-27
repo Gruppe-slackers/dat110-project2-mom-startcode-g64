@@ -83,12 +83,9 @@ public class Storage {
 		Set<String> subscribers = subscriptions.get(topic);
 		if (subscribers != null) {
 			subscribers.remove(user);
-			//Kan legge til at topic fjernes hvis den er tom, om ønskelig
-			/*
 			if(subscribers.isEmpty()) {
 				deleteTopic(topic);
 			}
-			 */
 		}
 	}
 }

@@ -13,10 +13,6 @@ public class UnsubscribeMsg extends Message {
     public String getTopic() {
         return topic;
     }
-    public void setTopic(String topic) {
-        this.topic = topic;
-    }
-
     @Override
     public String toString() {
         return "UnsubscribeMsg{" +
