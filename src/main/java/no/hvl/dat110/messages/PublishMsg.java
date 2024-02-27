@@ -5,13 +5,11 @@ import no.hvl.dat110.common.TODO;
 public class PublishMsg extends Message {
 	
 	// message sent from client to create publish a message on a topic
-
-	private String user;
 	private String topic;
 	private String message;
 
 	public PublishMsg(String user, String topic, String message) {
-		this.user = user;
+		super(MessageType.PUBLISH, user);
 		this.topic = topic;
 		this.message = message;
 	}
@@ -28,17 +26,11 @@ public class PublishMsg extends Message {
 	public void setTopic(String topic) {
 		this.topic = topic;
 	}
-	public String getUser() {
-		return user;
-	}
-	public void setUser(String user) {
-		this.user = user;
-	}
 
 	@Override
 	public String toString() {
 		return "PublishMsg{" +
-				"user='" + user + '\'' +
+				"user='" + super.getUser() + '\'' +
 				", topic='" + topic + '\'' +
 				", message='" + message + '\'' +
 				'}';
