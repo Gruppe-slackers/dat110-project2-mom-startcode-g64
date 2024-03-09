@@ -14,6 +14,7 @@ public class DeleteTopicMsg extends Message {
         return this.topic;
     }
 
+
     @Override
     public String toString() {
         return "DeleteTopicMsg{" +
